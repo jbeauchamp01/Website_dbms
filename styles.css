@@ -1,0 +1,159 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1,h2 {
+    font-size: 4em;
+}
+
+.services{
+    justify-content: center;
+    position: center;
+    text-align: center;
+}
+
+.hero {
+    background-image: url('https://static01.nyt.com/images/2024/02/27/well/23Well-fitness-data/23Well-fitness-data-superJumbo.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+nav {
+    background: linear-gradient(to bottom, #087ef3 0%, #65b0f6 100%); /* Adjust the colors as needed */
+    padding: 20px 0;}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px; /* Increased spacing between links */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px; /* Larger padding for bigger clickable area */
+    font-size: 18px; /* Larger font size for better readability */
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 252, 252);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #0073e6;
+    color: white;
+    bottom: 0;
+    width: 100%;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  
+  img {
+    max-width: 100%;
+    max-height:100%;
+  }
+  
+  .text {
+    font-size: 20px;
+    padding-left: 20px;
+  }
+
+  .container_left{ 
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  
+  .image_right{
+    max-width: 100%;
+    max-height:100%;
+ }
+
+ .text_left {
+    font-size: 20px;
+    padding-right: 20px;
+  }
+  .text, .text_left {
+    font-size: 20px;
+    padding: 20px;
+    text-align: right; /* Center align the text and button */
+}
+
+button {
+    background-color: #0073e6; /* Blue background */
+    color: white; /* White text */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px auto; /* Center button and add spacing */
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px; /* Ensures that buttons have a uniform width */
+}
+
+button:hover {
+    background-color: #005db3; /* Darker blue on hover */
+}
+
+.container {
+    max-width: 1200px; /* Limit the max width for better control on large screens */
+    margin: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+.reversed {
+    flex-direction: row-reverse; /* Reverse the order for alternating layouts */
+}
+
+button {
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack navigation items vertically on small screens */
+    }
+
+    .container, .reversed {
+        flex-direction: column; /* Stack container elements vertically */
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,64 @@
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 20px;
+    background: #0073e6;
+    text-align: center;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.machine {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #0073e6;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.star-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 30px;
+}
+.star-rating > label {
+    padding: 0 5px;
+    cursor: pointer;
+}
+.radio-btn {
+    display: none;
+}
+
+.radio-btn:checked + label:before {
+    content: "★";
+    color: gold;
+}
