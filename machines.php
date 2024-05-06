@@ -11,19 +11,56 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="food.html">Food</a></li>
-                <li><a href="trainer.html">Trainer</a></li>
-                <li><a href="machines.html">Machines</a></li>
+                <li><a href="food.php">Food</a></li>
+                <li><a href="trainer.php">Trainer</a></li>
+                <li><a href="machines.php">Machines</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <h1>Trainer</h1>
+        <h1>Machines</h1>
         <!-- PHP GOES HERE FOR THE MACHINES -->
-    </div>
+        <?php
+        $servername = "localhost"; 
+        $username = "root"; 
+        $password = "Milenio2024+"; 
+        $database = "fitness_app"; 
+        $conn = new mysqli($servername, $username, $password, $database);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $status = $_GET['status'] ?? 'all';  // Default to 'all' if no status is specified
+        $sql = "SELECT * FROM equipment";  
+        if ($status != 'all') 
+        {
+            $sql = "SELECT * FROM equipment WHERE status = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $status);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        } else {
+            $result = $conn->query($sql);
+}
 
-    <!-- trainer rating -->
+// Display the results in a table
+if (isset($result) && $result->num_rows > 0) 
+{
+    echo "<table><tr><th>Model</th><th>Address</th><th>Status</th></tr>";
+    while ($row = $result->fetch_assoc()) 
+    {
+        echo "<tr><td>" . $row["Model"] . "</td><td>" . $row["address"] . "</td><td>" . $row["Status"] . "</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No results found.";
+}
+
+
+        ?>
+
+    </div>
+<!-- trainer rating -->
 <div class="star-rating">
     <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide" />
     <label for="star5" >☆</label>
@@ -56,7 +93,6 @@
 }
 
 </script>
-
 
     <footer>
         <p>Copyright © 2024 Fitness Club</p>
