@@ -34,7 +34,7 @@
 </form>
         <!-- PHP GOES HERE FOR THE MACHINES -->
         <?php
-        $servername = "localhost"; 
+        $servername = "127.0.0.1"; 
         $username = "root"; 
         $password = "Milenio2024+"; 
         $database = "fitness_app";
