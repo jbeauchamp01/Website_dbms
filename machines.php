@@ -20,6 +20,18 @@
 
     <div class="container">
         <h1>Machines</h1>
+        <form action="machines.php" method="get">
+    <label for="maintenanceRec">Choose a Workout Type:</label>
+    <select name="maintenanceRec" id="maintenanceRec">
+        <option value="">All</option>
+        <option value="Cardio">Cardio</option>
+        <option value="Strength">Strength</option>
+        <option value="Flexibility">Flexibility</option>
+        <option value="Balance">Balance</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
         <!-- PHP GOES HERE FOR THE MACHINES -->
         <?php
         $servername = "localhost"; 
@@ -27,36 +39,30 @@
         $password = "Milenio2024+"; 
         $database = "fitness_app"; 
         $conn = new mysqli($servername, $username, $password, $database);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        $status = $_GET['status'] ?? 'all';  // Default to 'all' if no status is specified
-        $sql = "SELECT * FROM equipment";  
-        if ($status != 'all') 
-        {
-            $sql = "SELECT * FROM equipment WHERE status = ?";
+        $maintenanceRec = $_GET['maintenanceRec'] ?? ''; // Retrieve the selected maintenance record type or default to empty
+        // Construct the SQL query based on the selected maintenance record
+        $sql = "SELECT * FROM equipment"; // Default SQL for all equipment
+        if (!empty($maintenanceRec)) {
+
+            $sql = "SELECT * FROM equipment WHERE Maintenance_Rec = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $status);
+            $stmt->bind_param("s", $maintenanceRec);
             $stmt->execute();
             $result = $stmt->get_result();
         } else {
             $result = $conn->query($sql);
-}
-
+        }
 // Display the results in a table
-if (isset($result) && $result->num_rows > 0) 
-{
-    echo "<table><tr><th>Model</th><th>Address</th><th>Status</th></tr>";
-    while ($row = $result->fetch_assoc()) 
-    {
-        echo "<tr><td>" . $row["Model"] . "</td><td>" . $row["address"] . "</td><td>" . $row["Status"] . "</td></tr>";
+if (isset($result) && $result->num_rows > 0) {
+    echo "<table><tr><th>Model</th><th>Brand</th><th>Status</th><th>Workout Type</th></tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . htmlspecialchars($row["Model"]) . "</td><td>" . htmlspecialchars($row["Brand"]) . "</td><td>" . htmlspecialchars($row["Status"]) . "</td><td>" . htmlspecialchars($row["Maintenance_Rec"]) . "</td></tr>";
     }
     echo "</table>";
 } else {
     echo "No results found.";
 }
-
-
+$conn->close();
         ?>
 
     </div>
