@@ -66,39 +66,7 @@ $conn->close();
         ?>
 
     </div>
-<!-- trainer rating -->
-<div class="star-rating">
-    <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide" />
-    <label for="star5" >☆</label>
-    <input id="star4" name="rating" type="radio" value="4" class="radio-btn hide" />
-    <label for="star4" >☆</label>
-    <input id="star3" name="rating" type="radio" value="3" class="radio-btn hide" />
-    <label for="star3" >☆</label>
-    <input id="star2" name="rating" type="radio" value="2" class="radio-btn hide" />
-    <label for="star2" >☆</label>
-    <input id="star1" name="rating" type="radio" value="1" class="radio-btn hide" />
-    <label for="star1" >☆</label>
-    <button onclick="submitRating('trainer', 1);">Rate</button>
-</div>
 
-<script>
-    function submitRating(itemType, itemId) {
-    const rating = document.querySelector('input[name="rating"]:checked').value;
-    fetch('submit_rating.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `type=${itemType}&id=${itemId}&rating=${rating}`
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Rating submitted: ' + data.status);
-    })
-    .catch(error => console.error('Error submitting rating:', error));
-}
-
-</script>
 
     <footer>
         <p>Copyright © 2024 Fitness Club</p>
